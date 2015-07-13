@@ -1,5 +1,5 @@
 def is_legal(card)
-  if card.color == $deck.live_pile[0].color or card.number == $deck.live_pile[0].number
+  if card.color == $deck.live_pile[0].color or card.number == $deck.live_pile[0].number or $deck.live_pile[0].color == "wild"
     return true
   else
     return false
@@ -53,7 +53,7 @@ loop do
     end
   end
 
-  draw_card_from_hand(card, $playerhand)
+  $deck.live_pile_add($playerhand, card)
   
   $opponent.do_move()
 end
