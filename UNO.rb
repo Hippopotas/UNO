@@ -1,21 +1,9 @@
 require "colorize"
 
 require_relative "./UNOclass"
-require_relative "./UNOinterface"
 
-class Game
-  @@deck = Deck.new
-  @@currentCard = nil
-  def self.deck
-    @@deck
-  end
-  def self.currentCard
-    @@currentCard
-  end
-  def initialize()
-    self.currentCard = self.deck.draw
-  end
-end
+$deck = Deck.new
+$currentHand = $deck.draw
 
 class Opponent
   attr_accessor :hand
@@ -23,3 +11,5 @@ class Opponent
     
   end
 end
+
+require_relative "./UNOinterface"

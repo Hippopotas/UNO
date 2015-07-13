@@ -32,7 +32,7 @@ class Deck
     @colors = ["red","blue","yellow","green"]
     1.upto(2) do |number1|
       1.upto(9) do |number|
-        colors.each do |color|
+        @colors.each do |color|
           @deck = @deck.push(Card.new(color,number))
         end
       end
