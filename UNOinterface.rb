@@ -1,5 +1,5 @@
 def is_legal(card)
-  if card.color == $deck.live_pile[0].color or card.number == $deck.live_pile[0].number or $deck.live_pile[0].color == "wild"
+  if card.color == $deck.live_pile[0].color or card.number == $deck.live_pile[0].number or $deck.live_pile[0].number == "wild" or $deck.live_pile[0].number == "draw4"
     return true
   else
     return false
