@@ -30,6 +30,8 @@ $discardpile = []
 $opponent = Opponent.new
 
 $deck.draw($playerhand, 7)
+$deck.draw($opponent.hand, 7)
+
 $deck.draw($deck.live_pile, 1)
 
 #loop do
@@ -56,4 +58,6 @@ loop do
   $deck.live_pile_add($playerhand, card)
   
   $opponent.do_move()
+  
+  puts "Your opponent has #{$opponent.hand.length} cards."
 end
