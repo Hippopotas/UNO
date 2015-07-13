@@ -1,10 +1,7 @@
-puts "Welcome to online UNO!"
-puts "Press any key to start"
-input = gets.chomp
+require "colorize"
 
-loop do
-puts "Your hand is "
-end
+require_relative "./UNOclass"
+require_relative "./UNOinterface"
 
 class Game
   @@deck = Deck.new
