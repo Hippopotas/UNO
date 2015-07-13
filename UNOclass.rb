@@ -16,14 +16,14 @@ class Card
     @card
   end
   
-#  def type(type)
-#    if type = "skip"
-#      @number = type
-#      @card = 
-#    elsif type = "draw two"
-#    elsif type = "reverse"
-#    end
-#  end
+  def type(type)
+    if type = "skip"
+      @number = type
+      @card = 
+    elsif type = "draw two"
+    elsif type = "reverse"
+    end
+  end
 end
 
 class Deck
@@ -84,6 +84,5 @@ class Deck
       end
     else
       puts "That card is not in your hand."
-    end
   end
 end
