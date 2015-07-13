@@ -31,14 +31,19 @@ class Deck
     @deck = Array.new
     @colors = ["red","blue","yellow","green"]
     1.upto(2) do |number1|
-      1.upto(9) do |number|
-        @colors.each do |color|
+      @colors.each do |color|
+        1.upto(9) do |number|
           @deck = @deck.push(Card.new(color,number))
         end
+        @deck = @deck.push(Card.new(color,"draw2"))
       end
     end
+    @colors.each do |color|
+      @deck = @deck.push(Card.new(color,"0"))
+    end
     1.upto(4) do |number1|
-      @deck = @deck.push(Card.new("wild","wild"))
+      @deck = @deck.push(Card.new("wild","wild")) #wilds
+      @deck = @deck.push(Card.new("wild", "draw4")) #wild draws
     end
     @live_pile = Array.new
     self.draw(@live_pile,1)
