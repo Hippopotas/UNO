@@ -3,7 +3,6 @@ require "colorize"
 require_relative "./UNOclass"
 
 $deck = Deck.new
-$currentHand = $deck.draw
 
 class Opponent
   attr_accessor :hand
