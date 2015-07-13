@@ -5,9 +5,7 @@ class Card
     @card = [color,number]
   end
   
-  def color
-    @color
-  end
+  attr_accessor :color
   def number
     @number
   end

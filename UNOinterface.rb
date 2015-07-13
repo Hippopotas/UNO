@@ -1,5 +1,13 @@
 def is_legal(card)
-  if card.color == $deck.live_pile[0].color or card.number == $deck.live_pile[0].number or $deck.live_pile[0].number == "wild" or $deck.live_pile[0].number == "draw4"
+  if card.color == $deck.live_pile[0].color or card.number == $deck.live_pile[0].number or card.number == "wild" or card.number == "draw4"
+    return true
+  else
+    return false
+  end
+end
+
+def is_wild(card)
+  if card.number == "wild" or card.number == "draw4"
     return true
   else
     return false
@@ -7,11 +15,31 @@ def is_legal(card)
 end
 
 def draw_hand()
-  puts "The current card is #{$deck.live_pile[0].color.capitalize} #{$deck.live_pile[0].number}"
+  colorize_color = nil
+  if $deck.live_pile[0].color == "red"
+    colorize_color = :red
+  elsif $deck.live_pile[0].color == "green"
+    colorize_color = :green
+  elsif $deck.live_pile[0].color == "blue"
+    colorize_color = :blue
+  elsif $deck.live_pile[0].color == "yellow"
+    colorize_color = :yellow
+  end
+  puts "The current card is " + ($deck.live_pile[0].color.capitalize + " " + $deck.live_pile[0].number.to_s).colorize(colorize_color)
   puts "Your hand is:"
   number = 1
   $playerhand.each do |card|
-    print number.to_s + ". " + card.color.capitalize + " " + card.number.to_s + ", "
+    colorize_color = nil
+    if card.color == "red"
+      colorize_color = :red
+    elsif card.color == "green"
+      colorize_color = :green
+    elsif card.color == "blue"
+      colorize_color = :blue
+    elsif card.color == "yellow"
+      colorize_color = :yellow
+    end
+    print (number.to_s + ". " + card.color.capitalize + " " + card.number.to_s).colorize(colorize_color) + ", "
     number += 1
   end
   puts
@@ -48,7 +76,22 @@ loop do
       card = $playerhand[response.to_i - 1]
       puts "You picked #{card.color.capitalize} #{card.number}!"
       if is_legal(card)
-        break
+        if is_wild(card)
+          color = nil
+          loop do
+            print "Select a color (red, green, yellow, blue): "
+            color = gets.chomp
+            if color == "red" or color == "green" or color == "yellow" or color == "blue"
+              break
+            else
+              puts "That's not a color!".red
+            end
+          end
+          card.color = color
+          break
+        else
+          break
+        end
       else
         puts "Nice try, but that's invalid.".red
       end
@@ -57,7 +100,17 @@ loop do
 
   $deck.live_pile_add($playerhand, card)
   
+  if $playerhand.length == 0
+    puts "YOU WIN!".green
+    break
+  end
+  
   $opponent.do_move()
+  
+  if $opponent.length == 0
+    puts "YOU LOSE!".red
+    break
+  end
   
   puts "Your opponent has #{$opponent.hand.length} cards."
 end
