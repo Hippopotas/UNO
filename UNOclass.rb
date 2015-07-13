@@ -31,10 +31,11 @@ class Deck
     @deck = Array.new
     @colors = ["red","blue","yellow","green"]
     1.upto(2) do |number1|
-      1.upto(9) do |number|
-        @colors.each do |color|
+      @colors.each do |color|
+        1.upto(9) do |number|
           @deck = @deck.push(Card.new(color,number))
         end
+        @deck = @deck.push(Card.new(color,"draw2"))
       end
     end
     @colors.each do |color|
