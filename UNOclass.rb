@@ -84,5 +84,6 @@ class Deck
       end
     else
       puts "That card is not in your hand."
+    end
   end
 end
