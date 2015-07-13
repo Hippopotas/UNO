@@ -14,6 +14,14 @@ def is_wild(card)
   end
 end
 
+def do_special_action(hand, card)
+  if card.number == "draw4"
+    $deck.draw(hand, 4)
+  elsif card.number == "draw2"
+    $deck.draw(hand, 2)
+  end
+end
+
 def draw_hand()
   colorize_color = nil
   if $deck.live_pile[0].color == "red"
@@ -99,6 +107,7 @@ loop do
   end
 
   $deck.live_pile_add($playerhand, card)
+  do_special_action($opponent.hand, card)
   
   if $playerhand.length == 0
     puts "YOU WIN!".green
@@ -106,8 +115,9 @@ loop do
   end
   
   $opponent.do_move()
+  do_special_action($playerhand, $deck.live_pile.first)
   
-  if $opponent.length == 0
+  if $opponent.hand.length == 0
     puts "YOU LOSE!".red
     break
   end

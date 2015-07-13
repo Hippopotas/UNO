@@ -12,6 +12,9 @@ class Opponent
   def do_move
     self.hand.each do |card|
       if is_legal(card)
+        if is_wild(card)
+          card.color = "red"
+        end
         $deck.live_pile_add(self.hand, card)
         return
       end
