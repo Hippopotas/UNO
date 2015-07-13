@@ -49,17 +49,19 @@ class Deck
   def draw(destination,number)
     if @deck.length < number
       self.shuffle
-      
+    end
       drawn_cards = @deck.sample(number)
       @deck = @deck - drawn_cards
       drawn_cards.each do |card|
         destination.push(card)
       end
-    end
   end
   
   def shuffle
-    
+    @discard.each do |card|
+      @deck.push(card)
+    end
+    @discard = Array.new
   end
   
   def live_pile
