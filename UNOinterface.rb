@@ -53,7 +53,7 @@ loop do
     end
   end
 
-  draw_card_from_hand(card, $playerhand)
+  $deck.live_pile_add($playerhand, card)
   
   $opponent.do_move()
 end

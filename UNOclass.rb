@@ -74,8 +74,8 @@ class Deck
   
   def live_pile_add(origin,card)
     if origin.include?(card)
-      if @live_pile.first.card(0) == card.card(0) or @live_pile.first.card(1) == card.card(1) or card.card(1) == "wild"
-        origin = origin - card
+      if is_legal(card)
+        origin.delete(card)
         @discard.push(@live_pile.first)
         @live_pile = Array.new
         @live_pile.push(card)
