@@ -78,7 +78,7 @@ loop do
 
     print "Pick a card number or type 'draw': "
     response = gets.chomp
-    if response.downcase == "draw"
+    if response[0].downcase == "d"
       $deck.draw($playerhand, 1)
     else
       card = $playerhand[response.to_i - 1]
