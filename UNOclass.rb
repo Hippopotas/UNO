@@ -60,6 +60,18 @@ class Deck
       end
   end
   
+  def start_game
+    loop do
+      draw(@live_pile,1)
+      if @live_pile.first.card(1).to_s == @live_pile.first.card(1)
+        @deck.push(@live_pile.first)
+        @live_pile = Array.new
+      else
+        break
+      end
+    end
+  end
+  
   def shuffle
     @discard.each do |card|
       @deck.push(card)
