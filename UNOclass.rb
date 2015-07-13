@@ -1,0 +1,41 @@
+class Card
+  def initialize(color,number)
+    @color = color
+    @number = number
+    @card = [color,number]
+  end
+  
+  def color
+    @color
+  end
+  def number
+    @number
+  end
+  
+  def card
+    @card
+  end
+  
+#  def type(type)
+#    if type = "skip"
+#      @number = type
+#      @card = 
+#    elsif type = "draw two"
+#    elsif type = "reverse"
+#    end
+#  end
+end
+
+class Deck
+  def initialize
+    @deck = Array.new
+    @colors = ["red","blue","yellow","green"]
+    1.upto(2) do |number1|
+      1.upto(9) do |number|
+        colors.each do |color|
+          @deck = @deck.push(Card.new(color,number))
+        end
+      end
+    end
+  end
+end
