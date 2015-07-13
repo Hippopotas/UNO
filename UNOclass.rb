@@ -41,10 +41,12 @@ class Deck
       @deck = @deck.push(Card.new("wild","wild"))
     end
   end
-  
+    
   def draw(destination,number)
     drawn_cards = @deck.sample(number)
     @deck = @deck - drawn_cards
-    destination.push 
+    drawn_cards.each do |card|
+      destination.push(card)
+    end
   end
 end
