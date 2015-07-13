@@ -16,14 +16,14 @@ class Card
     @card
   end
   
-  def type(type)
-    if type = "skip"
-      @number = type
-      @card = 
-    elsif type = "draw two"
-    elsif type = "reverse"
-    end
-  end
+#  def type(type)
+#    if type = "skip"
+#      @number = type
+#      @card = 
+#    elsif type = "draw two"
+#    elsif type = "reverse"
+#    end
+#  end
 end
 
 class Deck
@@ -37,8 +37,12 @@ class Deck
         end
       end
     end
+    @colors.each do |color|
+      @deck = @deck.push(Card.new(color,"0"))
+    end
     1.upto(4) do |number1|
-      @deck = @deck.push(Card.new("wild","wild"))
+      @deck = @deck.push(Card.new("wild","wild")) #wilds
+      @deck = @deck.push(Card.new("wild", "draw4")) #wild draws
     end
     @live_pile = Array.new
     self.draw(@live_pile,1)
@@ -84,5 +88,6 @@ class Deck
       end
     else
       puts "That card is not in your hand."
+    end
   end
 end
