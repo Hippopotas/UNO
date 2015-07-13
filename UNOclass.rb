@@ -37,5 +37,8 @@ class Deck
         end
       end
     end
+    1.upto(4) do |number1|
+      @deck = @deck.push(Card.new("wild","wild"))
+    end
   end
 end
