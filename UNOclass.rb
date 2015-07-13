@@ -32,7 +32,7 @@ class Deck
     @colors = ["red","blue","yellow","green"]
     1.upto(2) do |number1|
       1.upto(9) do |number|
-        colors.each do |color|
+        @colors.each do |color|
           @deck = @deck.push(Card.new(color,number))
         end
       end
@@ -40,5 +40,11 @@ class Deck
     1.upto(4) do |number1|
       @deck = @deck.push(Card.new("wild","wild"))
     end
+  end
+  
+  def draw(destination,number)
+    drawn_cards = @deck.sample(number)
+    @deck = @deck - drawn_cards
+    destination.push 
   end
 end
