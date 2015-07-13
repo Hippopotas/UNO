@@ -40,6 +40,7 @@ class Deck
     1.upto(4) do |number1|
       @deck = @deck.push(Card.new("wild","wild"))
     end
+    @live_pile = Array.new
   end
     
   def draw(destination,number)
@@ -48,5 +49,16 @@ class Deck
     drawn_cards.each do |card|
       destination.push(card)
     end
+  end
+  
+  def live_pile
+    @live_pile
+  end
+  
+  def live_pile_add(origin,card)
+    if origin.include?(card)
+      origin = origin - card
+    else
+      puts "That card is not in your hand."
   end
 end
